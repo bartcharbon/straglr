@@ -1289,12 +1289,16 @@ class TREFinder:
             ref_repeat_count = int(ref_repeat_length / len(repeat_unit))
             repeat_id, variant_id = loci["{}:{}-{}".format(chrom, start_pos, end_pos)]
 
+            print("cols:")
+            print(*cols, sep=", ")
+            print("\n")
+
             allele1_repeat_count = round(cols[5])
             output_vcf_header_alt.add('##ALT=<ID=STR{},Description="Allele comprised of {} repeat units">\n'.format(allele1_repeat_count, allele1_repeat_count))
             allel1_ci_lower, allel1_ci_upper = ci[cols[5]]
             allel1_support = cols[6]
 
-            homzygous =  len(gt) == 1
+            homzygous = len(gt) == 1
 
             d_sum = 0
             d_n = 0
