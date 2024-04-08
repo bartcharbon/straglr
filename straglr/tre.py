@@ -1305,7 +1305,10 @@ class TREFinder:
             for pileupcolumn in pyBAM.pileup(chrom, start_pos, end_pos, truncate=True):
                 d_sum += pileupcolumn.n
                 d_n += 1
-            lc = int(d_sum / d_n)
+            if d_n > 0:
+                lc = int(d_sum / d_n)
+            else:
+                lc = 0
 
             if homzygous:
                 is_ref_allele = abs(allele1_repeat_count - ref_repeat_count) < 1
