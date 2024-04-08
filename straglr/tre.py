@@ -1308,6 +1308,8 @@ class TREFinder:
             if d_n > 0:
                 lc = int(d_sum / d_n)
             else:
+                # FIXME: no coverage? probably should not end up in the vcf?
+                # keep it here for debugging purposes, but do NOT commit to main!
                 lc = 0
 
             if homzygous:
